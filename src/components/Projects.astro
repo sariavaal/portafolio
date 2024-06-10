@@ -1,0 +1,169 @@
+---
+import Laravel from "./icons/Laravel.astro";
+import Javascript from "./icons/Javascript.astro";
+import Bootstrap from "./icons/Bootstrap.astro";
+import Mysql from "./icons/Mysql.astro";
+import Nodejs from "./icons/Nodejs.astro";
+import Express from "./icons/Express.astro";
+import React from "./icons/React.astro";
+import MongoDB from "./icons/MongoDB.astro";
+import Github2 from "./icons/Github2.astro";
+
+const TAGS = {
+  LARAVEL: {
+    name: "Laravel",
+    class: "text-red-500",
+    icon: Laravel,
+  },
+
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "text-white",
+    icon: Javascript,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class: "text-white",
+    icon: Mysql,
+  },
+  BOOTSTRAP: {
+    name: "Bootstrap",
+    class: "text-white",
+    icon: Bootstrap,
+  },
+  NODEJS:{
+    name: "NodeJS",
+    class: "text-white",
+    icon: Nodejs,
+  },
+  EXPRESS: {
+    name: "Express",
+    class: "text-white",
+    icon: Express,
+  },
+  REACT: {
+    name: "React",
+    class: "text-white",
+    icon: React,
+  },
+  MONGODB: {
+    name: "MongoDB",
+    class: "text-white",
+    icon: MongoDB,
+  },
+
+  GITHUB: {
+    name: "Github",
+    class: "bg-black text-white",
+    icon: Github2,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Sistema de reportes para casos de violencia contra la mujer",
+    description:
+      "Sistema de denuncias contra la violencia hacia la mujer, permite a cualquier persona hacer denuncias. Desarrollé dos modalidades: una con registro para más funcionalidades y otra sin registro para emergencias. Como resultado, logré agilizar significativamente los procesos de denuncia en casos específicos",
+    link: "https://github.com/sariavaal/tfg_denuncias",
+    github: "https://github.com/sariavaal/tfg_denuncias",
+    image: "./public/img/project1.webp",
+    tags: [TAGS.LARAVEL, TAGS.JAVASCRIPT, TAGS.MYSQL, TAGS.BOOTSTRAP],
+  },
+
+  {
+    title: "Alerta Ruido",
+    description:
+      "Facilité la denuncia de casos de contaminación sonora en la ciudad con un sistema eficaz para gestionar usuarios y denuncias. Desarrollé un formulario que permite describir incidentes, proporcionar ubicación exacta y adjuntar imágenes del hecho",
+    link: "https://github.com/sariavaal/POLUCION_SONORA_MVC",
+    github: "github.com/sariavaal/POLUCION_SONORA_MVC.",
+    image: "./public/img/project2.webp",
+    tags: [TAGS.NODEJS, TAGS.JAVASCRIPT, TAGS.EXPRESS, TAGS.MYSQL, TAGS.BOOTSTRAP],
+  },
+  {
+    title: "QuickJobs",
+    description:
+      "Desarrollé un sistema para la publicación y búsqueda de empleos informales, mostrando ofertas cercanas a la ubicación del usuario registrado. Los usuarios pueden buscar trabajos mediante palabras clave y un filtro de búsqueda, publicar ofertas, y ver postulaciones recibidas.",
+    link: "https://github.com/sariavaal/DevJobs",
+    github: "https://github.com/sariavaal/DevJobs",
+    image: "./public/img/project3.webp",
+    tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.MONGODB, TAGS.BOOTSTRAP, TAGS.NODEJS, TAGS.EXPRESS],
+  },
+  {
+    title: "Sistema de Veterinaria",
+    description:
+      "Este proyecto fue colaborativo. Implementé un módulo para asistencias veterinarias urgentes, permitiendo a los usuarios solicitar ayuda inmediata mediante un formulario y un mapa interactivo. Utilicé sockets para la comunicación en tiempo real entre usuarios y administradores, facilitando la rápida atención de las urgencias",
+    link: "https://github.com/Pame2175/Proyecto_grupal",
+    github: "https://github.com/Pame2175/Proyecto_grupal",
+    image: "./public/img/project4.webp",
+    tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.MONGODB, TAGS.BOOTSTRAP, TAGS.NODEJS, TAGS.EXPRESS],
+  }
+];
+---
+
+{
+  PROJECTS.map(({ title, description, tags, image, link }) => (
+    <article>
+      <h2 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h2>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-4 flex-row flex-wrap">
+        {tags.map((tag) => (
+          <li>
+            <span class={`flex gap-x-2 rounded-full text-sm ${tag.class} py-1 px-2 flex-wrap items-center`}>
+            <tag.icon class="size-4 lg:size-6" />
+            {tag.name}
+        </span>
+          </li>
+        ))}
+      </ul>
+      <div class="blur-borders rounded-lg shadow-1xl shadow-white/15 mt-4 mb-5">
+      <img src={image} alt={`Captura de pantalla del proyecto ${image}`} />
+    </div>
+    <div class="flex justify-center">
+  <div class="max-w-max">
+    <a
+      href={link}
+      class="rounded-full border border-white/10 flex justify-center items-center gap-x-2 py-2 px-4 lg:text-sm bg-white/10 hover:scale-110 transition hover:bg-white/10"
+    >
+      Ir al repositorio
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+    
+
+
+    <style>
+      .blur-borders {
+        position: relative;
+        display: inline-block;
+      }
+
+      .blur-borders::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        box-shadow: 0 0 15px 15px rgb(173, 171, 171) inset;
+        filter: blur(15px);
+        z-index: 1;
+      }
+
+      .blur-borders img {
+        display: block;
+        border-radius: inherit;
+        position: relative;
+        z-index: 2;
+      }
+    </style>
+    </article>
+  ))
+}
